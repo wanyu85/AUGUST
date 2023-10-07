@@ -1,0 +1,38 @@
+export const dataS = [
+    {
+        id: 1,
+        productName: "第一件商品",
+        imgUrl: "man2.jpg",
+        size: "X",
+        color: "黑色",
+        price: "$200",
+        number: "1",
+    },
+    {
+        id: 2,
+        productName: "第二件商品",
+        imgUrl: "kid2.jpg",
+        size: "M",
+        color: "藍色",
+        price: "$300",
+        number: "2",
+    },
+    {
+        id: 3,
+        productName: "第三件商品",
+        imgUrl: "women2.jpg",
+        size: "L",
+        color: "紅色",
+        price: "$400",
+        number: "3",
+    },
+    {
+        id: 4,
+        productName: "第四件商品",
+        imgUrl: "kid3.jpg",
+        size: "L",
+        color: "紅色",
+        price: "$400",
+        number: "3",
+    },
+];
