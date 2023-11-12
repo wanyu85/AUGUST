@@ -1,0 +1,88 @@
+/* ScrollBar寬度 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* ScrollBar顏色*/
+::-webkit-scrollbar-track {
+  background-color: #c2c2c2;
+  border-radius: 20px;
+}
+
+/* ScrollBar把手顏色 */
+::-webkit-scrollbar-thumb {
+  background: #6f6d6d;
+  border-radius: 20px;
+}
+
+/* ScrollBar hover的把手顏色 */
+::-webkit-scrollbar-thumb:hover {
+  background: #A390B9;
+}
+
+
+/* 輪播圖 */
+.carousel .slick-list,
+.slick-slider,
+.slick-track {
+  padding: 0.5rem 1.1rem;
+}
+
+.carousel {
+  opacity: 0.7;
+  pointer-events: none;
+  /* 滑鼠事件響應 */
+}
+
+/* active 的圖片 */
+.slick-center .carousel {
+  transform: scale(1.3);
+  z-index: 10000;
+  transition: all 400ms ease-in-out;
+  pointer-events: all;
+  opacity: 1;
+}
+
+/* dot 設定 */
+.carouselDots .slick-dots {
+  display: flex !important;
+  justify-content: center !important;
+  align-content: center !important;
+  margin: 80px !important;
+  width: auto;
+  position: absolute;
+  left: 41%;
+}
+
+.carouselDots .slick-dots li {
+  background-color: rgba(196, 193, 193, 0.6);
+  margin: 0 10px !important;
+  border-radius: 5px;
+  width: 15px !important;
+  height: 15px !important;
+  box-shadow: 0 3px 3px 1px rgba(102, 102, 102, 0.2);
+}
+
+.carouselDots .slick-dots li>button::before {
+  opacity: 0 !important;
+}
+
+.carouselDots .slick-active>button {
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 5px;
+  width: 18px !important;
+  height: 18px !important;
+  box-shadow: 0 3px 3px 1px rgba(102, 102, 102, 0.2);
+}
+
+/* 輪播圖 RWD */
+@media (max-width:900px) {
+  .center .slick-center .carousel {
+    transform: scale(1);
+  }
+
+  .center .carousel {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

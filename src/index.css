@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+}
+
+.bgc {
+    margin: 0;
+    background-color: #818181;
+    padding-bottom: 200px;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
