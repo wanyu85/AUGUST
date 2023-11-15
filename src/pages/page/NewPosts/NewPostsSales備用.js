@@ -36,42 +36,16 @@ export default function NewPostsSales() {
     // ! .forEach -> 迭代陣列中的每個元素並對其執行指定的操作，但不創建新的陣列或返回新的值
     // .map -> 創建一個新的陣列，其中包含每個元素根據指定的轉換函數處理後的結果。
     const clothesState = {};
+    const [newPostsSalesValue, setNewPostsSalesValue] = useState("");
 
-    const colorAndSizeComponents = colorInput.map((color) => {
-        clothesState[color.color] = {}; // 在 clothesState 新增「顏色」的屬性，並創建容器儲存後續訊息
-
-        const sizeComponents = sizeInput.map((size) => {
-            const [newPostsSalesValue, setNewPostsSalesValue] = useState("");
+    colorInput.forEach((color) => {
+        clothesState[color.color] = {};
+        sizeInput.forEach((size) => {
             clothesState[color.color][size.size] = {
                 newPostsSalesValue,
                 setNewPostsSalesValue,
             };
-
-            return (
-                <TableCell align='center' key={size.size}>
-                    <TextField
-                        value={newPostsSalesValue}
-                        onChange={(e) => setNewPostsSalesValue(e.target.value)}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position='end'>
-                                    件
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </TableCell>
-            );
         });
-
-        return (
-            <TableRow key={color.color}>
-                <TableCell component='th' align='center'>
-                    {color.color}
-                </TableCell>
-                {sizeComponents}
-            </TableRow>
-        );
     });
 
     // ! useCallback -> 用於緩存函數，以減少不必要的函數重新創建，通常在處理函數作為 props 傳遞時使用。
@@ -136,8 +110,47 @@ export default function NewPostsSales() {
                                     ))}
                                 </TableRow>
                             </TableHead>
+                            <TableBody>
+                                {colorInput.map((color, i) => (
+                                    <TableRow key={i}>
+                                        <TableCell
+                                            component='th'
+                                            align='center'
+                                        >
+                                            {color.color}
+                                        </TableCell>
 
-                            <TableBody>{colorAndSizeComponents}</TableBody>
+                                        {sizeInput.map((size, j) => (
+                                            <TableCell key={j} align='center'>
+                                                <TextField
+                                                    value={
+                                                        clothesState[
+                                                            color.color
+                                                        ][size.size]
+                                                            .newPostsSalesValue
+                                                    }
+                                                    onChange={(e) =>
+                                                        clothesState[
+                                                            color.color
+                                                        ][
+                                                            size.size
+                                                        ].setNewPostsSalesValue(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    InputProps={{
+                                                        endAdornment: (
+                                                            <InputAdornment position='end'>
+                                                                件
+                                                            </InputAdornment>
+                                                        ),
+                                                    }}
+                                                />
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                ))}
+                            </TableBody>
                         </Table>
                     </TableContainer>
                 </Grid>
@@ -174,8 +187,6 @@ export default function NewPostsSales() {
                     </Snackbar>
                 )}
             </Grid>
-
-            {/* <div>{colorAndSizeComponents}</div> */}
         </>
     );
 }
